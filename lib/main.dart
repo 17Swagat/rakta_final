@@ -28,6 +28,7 @@ import 'package:rakta_blood_donation/donate/donorsbloodGroups/on.dart';
 import 'package:rakta_blood_donation/donate/donorsbloodGroups/op.dart';
 import 'package:rakta_blood_donation/home/allrequest.dart';
 import 'package:rakta_blood_donation/home/profile.dart';
+import 'package:rakta_blood_donation/home/profile2.dart';
 import 'package:rakta_blood_donation/loginAndSignup/loginScreen.dart';
 import 'package:rakta_blood_donation/maps/donorsMap.dart';
 import 'package:rakta_blood_donation/notification/acceptedNotification.dart';
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       
-      initialRoute: '/',//'/donor01_list',//'/ap_list_map_donors',//'/ap_list',//'/donor01_list',//'/donorsMap',//'/donor01_list',
+      initialRoute: '/',//'/profile2',//'/donor01_list',//'/ap_list_map_donors',//'/ap_list',//'/donor01_list',//'/donorsMap',//'/donor01_list',
       routes: {
         
         '/':(context) => LoginPage(),
@@ -68,6 +69,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => RegisterPage(),
         '/home':(context) => HomePage(),
         '/profile': (context) => Exp_ProfilePage(),
+        '/profile2': (context) => Profile2(),
         '/allRequestsPage': (context) => AllRequestsPage(),
         '/notificationMain': (context) => NotificationMain(),
         '/notificationList': (context) => NotificationList(),

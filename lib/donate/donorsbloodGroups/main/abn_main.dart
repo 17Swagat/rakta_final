@@ -11,45 +11,6 @@ class AB_negativeMain extends StatefulWidget {
 
 class _AB_negativeMainState extends State<AB_negativeMain> {
 
-  // int _selectedIndex = 0;
-  // // custom functions
-  // void _navigateBottomBar(int index) {
-  //   setState(() {
-  //     _selectedIndex = index;
-  //   });
-  // }
-
-  // final List<Widget> _pages = [
-  //   // DonorsInfoListPage(),
-  //   // // DonorsMap() // Home__page(), // DonateMap(),
-  //   AB_negativeList(),// ab negative list
-  //   AB_negativeDonors_Map(),// ab negative map
-  // ];
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
-  // @override
-  // Widget build(BuildContext context) {
-  //   setState(() {
-      
-  //   });
-  //   return Scaffold(
-  //     body: _pages[_selectedIndex],
-  //     bottomNavigationBar: BottomNavigationBar(
-  //           type: BottomNavigationBarType.fixed,
-  //           currentIndex: _selectedIndex,
-  //           onTap: _navigateBottomBar,
-  //           items: [
-  //             BottomNavigationBarItem(
-  //                 icon: Icon(Icons.bloodtype_outlined), label: 'Donors List'),
-  //             BottomNavigationBarItem(
-  //                 icon: Icon(Icons.location_on), label: 'Donors Locations'),
-  //           ]),
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

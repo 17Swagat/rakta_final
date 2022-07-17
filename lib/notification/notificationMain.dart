@@ -40,7 +40,7 @@ class _NotificationMainState extends State<NotificationMain> {
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.list),
-              label: 'Blood Requests'
+              label: 'Blood Requests',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.add_task_rounded),

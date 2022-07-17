@@ -62,7 +62,10 @@ class _HomePageState extends State<HomePage> {
             if (index == 0) {
               //1. PROFILE
               // Navigator.pushNamed(context, "/profile");
-              Navigator.pushNamed(context, "/profile");
+              
+              // 1.2
+              // Navigator.pushNamed(context, "/profile");
+              Navigator.pushNamed(context, "/profile2");
             }
 
             if (index == 1) {
@@ -427,7 +430,7 @@ class _HomePageState extends State<HomePage> {
                 makeDashBoardItems(
                     // "Calender", "assets/thirdParty/calendar.png", 0),
                     "Profile",
-                    "assets/images/profile_logImg128.png",
+                    "assets/images/pImg.png",
                     0),
                 //index 1
                 makeDashBoardItems(
