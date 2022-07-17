@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_sms/flutter_sms.dart';
+// import 'package:flutter_sms/flutter_sms.dart';
 
 late GeoPoint postion;
 
@@ -19,14 +19,14 @@ class AcceptedNotifcations extends StatefulWidget {
 
 class _AcceptedNotifcationsState extends State<AcceptedNotifcations> {
   // function to send sms
-  void sending_SMS(String msg, List<String> list_receipents) async {
-    String send_result =
-        await sendSMS(message: msg, recipients: list_receipents)
-            .catchError((err) {
-      print(err);
-    });
-    print(send_result);
-  }
+  // void sending_SMS(String msg, List<String> list_receipents) async {
+  //   String send_result =
+  //       await sendSMS(message: msg, recipients: list_receipents)
+  //           .catchError((err) {
+  //     print(err);
+  //   });
+  //   print(send_result);
+  // }
 
   // popupcode
   showPopup_onReport() {
@@ -189,7 +189,7 @@ class _AcceptedNotifcationsState extends State<AcceptedNotifcations> {
                                                 launch(
                                                     'sms:+91${phoneNumber[0]}?body=rakta I need an urgent help from you.'); //RAKTA :\nI need an urgent help from you...');
                                                 // launchSms("RAKTA", phoneNumber);
-                                                launchSms();
+                                                // launchSms();
                                               } else {
                                                 // const snackBar = SnackBar(
                                                 //   content: Text('SMS App NOT OPENING!'),
