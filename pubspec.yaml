@@ -39,7 +39,7 @@ dependencies:
   firebase_core: ^1.15.0
   firebase_auth: ^3.3.16
   cloud_firestore: ^3.1.14
-  auth: ^8.1.0
+  # auth: ^8.1.0
     
 
   # Google Maps
@@ -49,11 +49,12 @@ dependencies:
 
 
   # SMS
-  flutter_sms: ^2.3.3
+  # flutter_sms: ^2.3.3
   url_launcher: ^6.1.4
 
   # Get (For Radio Buttons)
   get: ^4.6.5
+
 
 dev_dependencies:
   flutter_test:
