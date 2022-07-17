@@ -36,7 +36,7 @@ class _A_negativeMainState extends State<A_negativeMain> {
               SizedBox(
                 width: MediaQuery.of(context).size.width - 100,
                 child: ElevatedButton(onPressed: (){
-                  Navigator.pushNamed(context, "/bp_list");
+                  Navigator.pushNamed(context, "/an_list");
                 }, child: Text("A- Donors List"),
                 style: ElevatedButton.styleFrom(
                   // backgroundColor: Colors.redAccent
@@ -49,7 +49,7 @@ class _A_negativeMainState extends State<A_negativeMain> {
               SizedBox(
                 width: MediaQuery.of(context).size.width - 100,
                 child: ElevatedButton(onPressed: (){
-                  Navigator.pushNamed(context, "/bp_list_map_donors");
+                  Navigator.pushNamed(context, "/an_list_map_donors");
                 },
                 style: ElevatedButton.styleFrom(
                   // backgroundColor: Colors.redAccent
