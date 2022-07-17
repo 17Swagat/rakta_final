@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "310098854750",
+    "project_id": "myrakta-6cd82",
+    "storage_bucket": "myrakta-6cd82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310098854750:android:d3178c0d4f0027e79505cf",
+        "android_client_info": {
+          "package_name": "com.example.rakta_blood_donation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "310098854750-1kd7pbd86am1clk8mai3ekptkjrpr5ge.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHygkRZsCsKj0YJma3j4ArODmtO6Xb23A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "310098854750-1kd7pbd86am1clk8mai3ekptkjrpr5ge.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
