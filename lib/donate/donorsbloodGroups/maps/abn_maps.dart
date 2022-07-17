@@ -36,7 +36,7 @@ class _AB_negativeDonors_MapState extends State<AB_negativeDonors_Map> {
   }
 
   getMarkerData() async {
-    FirebaseFirestore.instance.collection('Donors').where('Blood Group', isEqualTo: 'ab-').get().then((mydata) {
+    FirebaseFirestore.instance.collection('Donors').where('Blood Group', whereIn: ['ab-', 'AB-']).get().then((mydata) {
       if (mydata.docs.isNotEmpty) {
         for (int i = 0; i < mydata.docs.length; i++) {
           initMarker(mydata.docs[i].data(), mydata.docs[i].id);

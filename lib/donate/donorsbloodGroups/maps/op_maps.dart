@@ -32,7 +32,7 @@ class _O_positiveDonors_MapState extends State<O_positiveDonors_Map> {
   }
 
   getMarkerData() async {
-    FirebaseFirestore.instance.collection('Donors').where('Blood Group', isEqualTo: 'o+').get().then((mydata) {
+    FirebaseFirestore.instance.collection('Donors').where('Blood Group', whereIn: ['o+', 'O+']).get().then((mydata) {
       if (mydata.docs.isNotEmpty) {
         for (int i = 0; i < mydata.docs.length; i++) {
           initMarker(mydata.docs[i].data(), mydata.docs[i].id);
