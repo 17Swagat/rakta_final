@@ -27,6 +27,7 @@ class _Profile2State extends State<Profile2> {
 
   // getting data from the firebase
 
+
   getUserData() async {
     // FirebaseAuth
     String? currentUserEmail = await FirebaseAuth.instance.currentUser!.email;

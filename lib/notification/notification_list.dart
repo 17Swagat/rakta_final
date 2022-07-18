@@ -95,10 +95,19 @@ class _NotificationListState extends State<NotificationList> {
                                         '${snapshot.data!.docs[index].id}')
                                     .collection('Accepted People')
                                     // .doc('${snapshot.data!.docs[index].id}')
-                                    .doc('${await FirebaseAuth.instance.currentUser!.email}')
+                                    .doc(
+                                        '${await FirebaseAuth.instance.currentUser!.email}')
                                     .set({
                                   'Situation': 'Accepted', //
                                 });
+
+                                await FirebaseFirestore.instance
+                                    .collection('Notify Donate')
+                                    .doc(
+                                        '${await FirebaseAuth.instance.currentUser!.email}')
+                                    .collection('Requests')
+                                    .doc('${snapshot.data!.docs[index].id}')
+                                    .delete();
 
                                 // //showing the snack bar
                                 // final text =

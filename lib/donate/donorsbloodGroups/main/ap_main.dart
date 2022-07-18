@@ -3,8 +3,6 @@ import 'package:rakta_blood_donation/donate/donorsListByBloodGrp/apostiveList.da
 import 'package:rakta_blood_donation/donate/donorsbloodGroups/abn.dart';
 import 'package:rakta_blood_donation/donate/donorsbloodGroups/maps/abn_maps.dart';
 import 'package:rakta_blood_donation/donate/donorsbloodGroups/maps/ap_maps.dart';
-import 'package:rakta_blood_donation/rough/file1.dart';
-import 'package:rakta_blood_donation/rough/file2.dart';
 
 class A_positiveMain extends StatefulWidget {
   const A_positiveMain({Key? key}) : super(key: key);

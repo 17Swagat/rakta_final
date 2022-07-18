@@ -8,7 +8,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:flutter_sms/flutter_sms.dart';
 
-late GeoPoint postion;
+late GeoPoint postion_user;
+late GeoPoint postion_requester;
 
 class AcceptedNotifcations extends StatefulWidget {
   const AcceptedNotifcations({Key? key}) : super(key: key);
@@ -75,7 +76,7 @@ class _AcceptedNotifcationsState extends State<AcceptedNotifcations> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.redAccent,
-        title: Text("Accepted Blood Requests"),
+        title: Text("ACCEPTED BLOOD REQUESTS"),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -127,13 +128,7 @@ class _AcceptedNotifcationsState extends State<AcceptedNotifcations> {
                             child: Column(
                               children: [
                                 Text(
-                                  // "Your request has been accepted by  ${snapshot.data!.docs[index].id}",
-                                  // "Blood Request Accepted Between: ${snapshot.data!.docs[index].id} & ${FirebaseAuth.instance.currentUser!.email}",
-                                  // "${(snapshot.data!.docs[index] != "useremailjj") ? "x": "x"}",
                                   "$notification_text",
-
-                                  // "Blood Request has been accepted between ${snapshot.data!.docs[index].id} and ${FirebaseAuth.instance.currentUser!.email}",
-                                  // "You accepted Blood Request from:  ${snapshot.data!.docs[index].id}",
                                   style: TextStyle(
                                       fontSize: 20, //40
                                       fontWeight: FontWeight.bold,
@@ -252,25 +247,44 @@ class _AcceptedNotifcationsState extends State<AcceptedNotifcations> {
                                         .get()
                                         .then((snapshot) =>
                                             snapshot.docs.forEach((document) {
-                                              // if (document['Email'] ==
-                                              // (FirebaseAuth.instance.currentUser!.email)) {
-                                              // if (){
-                                              // name = document['Name'];
-                                              // bloodgroup = document['Blood Group'];
-                                              // age = num.parse(document['Age']); //document['Age'];
-                                              // email = document['Email'];
-                                              // gender = document['Gender'];
-                                              // address = document['City Town'];
-                                              // }
-                                              postion = document['Location'];
+                                              postion_user = document['Location'];
                                               Navigator.of(context).push(
                                                   MaterialPageRoute(
                                                       builder: (context) =>
                                                           ViewOnMap(
                                                               document['Name'],
                                                               document['Email'],
-                                                              postion)));
+                                                              postion_user)));
                                             }));
+                                    
+                                    FirebaseFirestore.instance
+                                        // .collection('page_userInfo')
+                                        .collection('Requesters')
+                                        .where('Email',
+                                            isEqualTo:
+                                                '${snapshot.data!.docs[index].id}')
+                                        .get()
+                                        .then((snapshot) =>
+                                            snapshot.docs.forEach((document) {
+                                              postion_user = document['Location'];
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ViewOnMap(
+                                                              document['Name'],
+                                                              document['Email'],
+                                                              postion_user)));
+                                            }));
+                                              // Navigator.of(context).push(
+                                              //     MaterialPageRoute(
+                                              //         builder: (context) =>
+                                              //             ViewOnMap(
+                                              //                 document['Name'],
+                                              //                 document['Email'],
+                                              //                 postion_user)));
+
+                                        
+
                                     // Navigator.pushNamed(context, "/viewOnMap");
                                     //  Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserData("WonderClientName",132)));
                                   },
