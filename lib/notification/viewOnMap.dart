@@ -82,33 +82,33 @@ class _ViewOnMapState extends State<ViewOnMap> {
           }
         });
 
-    FirebaseFirestore.instance
-        .collection('Requesters')
-        .where('Email', whereIn: [
-          widget.email,
-          '${FirebaseAuth.instance.currentUser!.email}'
-        ])
-        .get()
-        .then((mydata) async{
-          if (mydata.docs.isNotEmpty) {
-            for (int i = 0; i < mydata.docs.length; i++) {
-              initMarker(mydata.docs[i].data(), mydata.docs[i].id);
+    // FirebaseFirestore.instance
+    //     .collection('Requesters')
+    //     .where('Email', whereIn: [
+    //       widget.email,
+    //       '${FirebaseAuth.instance.currentUser!.email}'
+    //     ])
+    //     .get()
+    //     .then((mydata) async{
+    //       if (mydata.docs.isNotEmpty) {
+    //         for (int i = 0; i < mydata.docs.length; i++) {
+    //           initMarker(mydata.docs[i].data(), mydata.docs[i].id);
 
-              _polyline.add(
-                Polyline(
-                    polylineId: PolylineId('PolylineId_${mydata.docs[i].id}'),
-                    points: latlng,
-                    width: 5,
-                    patterns: [
-                      PatternItem.dash(8),
-                      PatternItem.gap(15),
-                    ],
-                    color: Colors.redAccent),
-              );
-            }
-          }
+    //           _polyline.add(
+    //             Polyline(
+    //                 polylineId: PolylineId('PolylineId_${mydata.docs[i].id}'),
+    //                 points: latlng,
+    //                 width: 5,
+    //                 patterns: [
+    //                   PatternItem.dash(8),
+    //                   PatternItem.gap(15),
+    //                 ],
+    //                 color: Colors.redAccent),
+    //           );
+    //         }
+    //       }
 
-        });
+        // });
   }
 
   @override

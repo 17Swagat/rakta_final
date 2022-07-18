@@ -80,6 +80,8 @@ class _HomePageState extends State<HomePage> {
 
               // First fetching the Requester's Location and saving it to the database
               getUserCurrentLocation().then((value) async {
+
+                
                 // value has the coordinates of the users
                 // var name;
                 // var email;
@@ -89,45 +91,46 @@ class _HomePageState extends State<HomePage> {
                 // var gender;
 
                 // await FirebaseFirestore.instance.collection('Register').doc('${FirebaseAuth.instance.currentUser!.email}').get()
-                // .then((snapshot) => snapshot.docs.for);
-                String? currentUserEmail =
-                    await FirebaseAuth.instance.currentUser!.email;
-                var req_name;
-                var req_age;
-                var req_bloodgroup;
-                var req_email;
-                var req_gender;
-                var req_address;
+              //   // .then((snapshot) => snapshot.docs.for);
+              //   String? currentUserEmail =
+              //       await FirebaseAuth.instance.currentUser!.email;
+              //   late var req_name;
+              //   late var req_age;
+              //   late var req_bloodgroup;
+              //   late var req_email;
+              //   late var req_gender;
+              //   late var req_address;
                 
-                FirebaseFirestore.instance
-                    // .collection('page_userInfo')
-                    .collection('Register')
-                    .get()
-                    .then((snapshot) => snapshot.docs.forEach((document) {
-                          if (document['Email'] ==
-                              (FirebaseAuth.instance.currentUser!.email)) {
-                            req_name = document['Name'];
-                            req_bloodgroup = document['Blood Group'];
-                            req_age =
-                                num.parse(document['Age']); //document['Age'];
-                            req_email = document['Email'];
-                            req_gender = document['Gender'];
-                            req_address = document['City Town'];
-                          }
-                        }));
+              //   FirebaseFirestore.instance
+              //       // .collection('page_userInfo')
+              //       .collection('Register')
+              //       .get()
+              //       .then((snapshot) => snapshot.docs.forEach((document) {
+              //             if (document['Email'] ==
+              //                 (FirebaseAuth.instance.currentUser!.email)) {
+              //               req_name = document['Name'];
+              //               req_bloodgroup = document['Blood Group'];
+              //               req_age =
+              //                   num.parse(document['Age']); //document['Age'];
+              //               req_email = document['Email'];
+              //               req_gender = document['Gender'];
+              //               req_address = document['City Town'];
+              //             }
+              //           }));
 
-                await FirebaseFirestore.instance
-                    .collection('Requesters')
-                    .doc('${FirebaseAuth.instance.currentUser!.email}')
-                    .set({
-                  'Name': '$req_name',
-                  'Email': '${FirebaseAuth.instance.currentUser!.email}',
-                  'Blood Group': '$req_bloodgroup',
-                  'Gender': '$req_gender',
-                  'Address': '$req_address',
-                  'Location': GeoPoint(value.latitude, value.longitude),
-                });
+              //   await FirebaseFirestore.instance
+              //       .collection('Requesters')
+              //       .doc('${FirebaseAuth.instance.currentUser!.email}')
+              //       .set({
+              //     'Name': '$req_name',
+              //     'Email': '${FirebaseAuth.instance.currentUser!.email}',
+              //     'Blood Group': '$req_bloodgroup',
+              //     'Gender': '$req_gender',
+              //     'Address': '$req_address',
+              //     'Location': GeoPoint(value.latitude, value.longitude),
+              //   });
               });
+
 
               // Navigating to the `donor01_list.dart` file
               Navigator.pushNamed(context, '/donor01_list');
