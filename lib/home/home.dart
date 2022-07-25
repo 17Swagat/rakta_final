@@ -61,82 +61,84 @@ class _HomePageState extends State<HomePage> {
           onTap: () {
             if (index == 0) {
               //1. PROFILE
-              // Navigator.pushNamed(context, "/profile");
-
-              // 1.2
-              // Navigator.pushNamed(context, "/profile");
               Navigator.pushNamed(context, "/profile2");
             }
 
             if (index == 1) {
               //2. Notification
-              // Navigator.pushNamed(
-              //     context, '/notificationList');
               Navigator.pushNamed(context, "/notificationMain");
             }
 
             if (index == 2) {
               //3. Request Blood
 
-              // First fetching the Requester's Location and saving it to the database
-              getUserCurrentLocation().then((value) async {
-                // value has the coordinates of the users
-                // var name;
-                // var email;
-                // var phonenumber;
-                // var address;
-                // var bloodgroup;
-                // var gender;
+              // 3.1 First getting the user info from the Register Collection
 
-                // await FirebaseFirestore.instance.collection('Register').doc('${FirebaseAuth.instance.currentUser!.email}').get()
-                //   // .then((snapshot) => snapshot.docs.for);
-                //   String? currentUserEmail =
-                //       await FirebaseAuth.instance.currentUser!.email;
-                //   late var req_name;
-                //   late var req_age;
-                //   late var req_bloodgroup;
-                //   late var req_email;
-                //   late var req_gender;
-                //   late var req_address;
+              getUserCurrentLocation().then((Value) async {
+                String? currentUserEmail =
+                    await FirebaseAuth.instance.currentUser!.email;
+                late String name;
+                late String bloodGroup;
+                late String email;
+                late String phoneNumber;
+                late String address;
+                late num age;
+                late String gender;
+                // Geopoint location
+                late GeoPoint location;
+                await FirebaseFirestore.instance
+                    .collection('Register')
+                    .get()
+                    .then((snapshot) => snapshot.docs.forEach((document) {
+                          if (document.id.toString() ==
+                              currentUserEmail.toString()) {
+                            // retrived Requesters info
+                            name = document['Name'];
+                            bloodgroup = document['Blood Group'];
+                            email = document['Email'];
+                            gender = document['Gender'];
+                            address = document['City Town'];
+                            phoneNumber = document['Phone Number'];
+                            address = document['City Town'];
+                            age = document['Age'];
 
-                //   FirebaseFirestore.instance
-                //       // .collection('page_userInfo')
-                //       .collection('Register')
-                //       .get()
-                //       .then((snapshot) => snapshot.docs.forEach((document) {
-                //             if (document['Email'] ==
-                //                 (FirebaseAuth.instance.currentUser!.email)) {
-                //               req_name = document['Name'];
-                //               req_bloodgroup = document['Blood Group'];
-                //               req_age =
-                //                   num.parse(document['Age']); //document['Age'];
-                //               req_email = document['Email'];
-                //               req_gender = document['Gender'];
-                //               req_address = document['City Town'];
-                //             }
-                //           }));
+                            FirebaseFirestore.instance
+                                .collection('Requesters')
+                                .doc('$currentUserEmail')
+                                .set({
+                              'Name': name,
+                              'Blood Group': bloodgroup,
+                              'Age': age,
+                              'Gender': name,
+                              'Email': email,
+                              'Phone Number': phoneNumber,
+                              'Address': address,
+                              'Location':
+                                  GeoPoint(Value.latitude, Value.longitude),
+                            });
+                          }
+                        }));
 
-                //   await FirebaseFirestore.instance
-                //       .collection('Requesters')
-                //       .doc('${FirebaseAuth.instance.currentUser!.email}')
-                //       .set({
-                //     'Name': '$req_name',
-                //     'Email': '${FirebaseAuth.instance.currentUser!.email}',
-                //     'Blood Group': '$req_bloodgroup',
-                //     'Gender': '$req_gender',
-                //     'Address': '$req_address',
-                //     'Location': GeoPoint(value.latitude, value.longitude),
-                //   });
+                Navigator.pushNamed(context, "/donor01_list");
               });
 
-              // Navigating to the `donor01_list.dart` file
-              requesterStuff(context);
-              // Navigator.pushNamed(context, '/donor01_list'); //************ */
-
-              //activating function on `Donate Blood` click
-              // donateBloodFunc_popupDialog();
-              // show_bloodDonateConfimationDialog(context);
+              // // First fetching the Requester's Location and saving it to the database
+              // // getUserCurrentLocation().then((value) async {
+              // //   String? currentUserEmail =
+              // //       await FirebaseAuth.instance.currentUser!.email;
+              // //   late String name;
+              // //   late String bloodGroup;
+              // //   late String email;
+              // //   late String phoneNumber;
+              // //   late String address;
+              // //   late String gender;
+              // //   // Geopoint location
+              // //   late GeoPoint location;
+              // // await FirebaseFirestore.instance.collection('Register').doc('$currentUserEmail').get().then((value) => null)
+              // // Navigating to the `donor01_list.dart` file
+              // requesterStuff(context);
             }
+
             if (index == 3) {
               //4. Donate Blood
               // Navigator.pushNamed(context, "/exp_bloodRequest");
@@ -187,59 +189,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  //2. blood donation popup dialog
-  donateBloodFunc_popupDialog() {
-    showDialog(
-        // barrierColor: Color.fromARGB(255, 244, 174, 153),
-        context: context,
-        builder: (context) {
-          return Dialog(
-            // insetPadding: EdgeInsets.all(4.0),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-              // side: BorderSide(width: 40)
-            ),
-            elevation: 16,
-            child: Container(
-              // margin: EdgeInsets.only(
-              //   left: 20,
-              // ),
-              // top: MediaQuery.of(context).size.height * 0.5),
-              color: Color.fromARGB(
-                  255, 244, 174, 153), //Color.fromARGB(255, 244, 78, 44),
-              child: ListView(
-                shrinkWrap: true,
-                children: <Widget>[
-                  // SizedBox(height: 20),
-                  Center(
-                      child: Text(
-                    'Do you really want to Donate Blood?',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  )),
-                  SizedBox(height: 20),
-                  CircleAvatar(
-                    backgroundColor: Color.fromARGB(255, 2, 37, 52),
-                    radius: 30,
-                    child: IconButton(
-                        onPressed: () {
-                          print('hello');
-                        },
-                        icon: Icon(Icons.arrow_forward_ios)),
-                  ),
-                  SizedBox(
-                    height: 40,
-                  ),
-                ],
-              ),
-            ),
-          );
-        });
-  }
-
-  // #3. Comes up when the user wants to donate blood
+  // #x. Comes up when the user wants to donate blood
   show_bloodDonateConfimationDialog(BuildContext context) {
     // set up the buttons
     Widget cancelButton = TextButton(
